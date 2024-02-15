@@ -23,7 +23,7 @@ export default function Home() {
   const [place, setPlace] = useAtom<PrimitiveAtom<string>>(placeAtom)
   const [loading, setLoading] = useAtom<PrimitiveAtom<boolean>>(loadingCityAtom)
   const { isLoading, error, data, refetch } = useQuery<WeatherData>('repoData', async () => {
-    const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${place}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&cnt=20`)
+    const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${place}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`)
     return data;
   })
 
@@ -39,8 +39,8 @@ export default function Home() {
     </div>
   )
   const firstData = data?.list[0]
-  console.log(data)
-  console.log(firstData?.dt_txt)
+  // console.log(data)
+  // console.log(firstData?.dt_txt)
 
   const uniqueDates = [
     ...new Set(data?.list.map((entry, i) => new Date(entry.dt * 1000).toISOString().split('T')[0]))
@@ -135,7 +135,7 @@ export default function Home() {
             </section>
             {/* 7 day forecast data */}
             <section className="flex w-full flex-col gap-4">
-              <p className="text-2xl">Forcast(7 days)</p>
+              <p className="text-2xl">Forecast(7 days)</p>
               {firstDataForEachDate.map((d, index) => (
                 <div key={index}>
                   {d &&
