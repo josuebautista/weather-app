@@ -53,7 +53,7 @@ const ForecastWeatherDetail: FC<ForecastWeatherDetailProps> = ({
         </div>
       </section>
       {/* Right */}
-      <section className='overflow-x-auto flex justify-center gap-4 px-4 w-full pr-10'>
+      <section className='overflow-x-auto flex justify-between gap-4 px-4 w-full pr-10'>
         <WeatherDetails
           visibility={visibility}
           humidity={humidity}
